@@ -64,12 +64,12 @@ def helmDeploy(Map args) {
     // Check for dryRun or for real deployment
     if (args.dry_run) {
         println "Running dry-run deployment"
-        sh "helm upgrade --dry-run --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag},ingress.hostname=${args.hostname} --namespace=${namespace}"
+        sh "helm upgrade --dry-run --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag} --namespace=${namespace}"
     } else {
         println "Running deployment"
 
         // reimplement --wait once it works reliable
-        sh "helm upgrade --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag},ingress.hostname=${args.hostname} --namespace=${namespace}"
+        sh "helm upgrade --install ${args.name} ${args.chart_dir} --set imageTag=${args.version_tag} --namespace=${namespace}"
 
         // sleeping until --wait works reliably
         sleep(20)
