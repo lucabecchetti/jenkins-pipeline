@@ -50,7 +50,7 @@ def helmConfig() {
  */
 def helmDeploy(Map args) {
 
-    helmConfig()
+    //helmConfig()
 
     def String namespace
 
